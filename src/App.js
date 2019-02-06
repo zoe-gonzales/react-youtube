@@ -1,26 +1,52 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Container, Row, Col } from 'reactstrap';
+import SearchBar from './components/SearchBar';
+import VideoDetail from './components/VideoDetail';
+import {VideoList, VideoListItem} from './components/VideoList';
+import API from './utils/API';
 
 class App extends Component {
+  /* Storing information retrieved from API */
+  state = {
+    videos: [],
+    selectedVideo: null
+  }
+
+  componentDidMount() {
+    this.searchYouTube("kittens");
+  }
+
+  searchYouTube = term => {
+    API.searchVideos(term)
+      .then(res => this.setState({video: res.data.items, selectedVideo: res.data.items[0]}))
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Container>
+        <Row>
+          <Col>
+            <SearchBar />
+          </Col>
+        </Row>
+        <Row>
+            <Col md="9">
+              <VideoDetail video={this.state.selectedVideo}/>
+            </Col> 
+            <Col md="3">
+              <VideoList>
+                <VideoListItem />
+                <VideoListItem />
+                <VideoListItem />
+                <VideoListItem />
+                <VideoListItem />
+                <VideoListItem />
+              </VideoList>
+            </Col>
+        </Row>
+      </Container>
+      
     );
   }
 }
