@@ -4,7 +4,9 @@ import _ from 'lodash';
 import SearchBar from './components/SearchBar';
 import VideoDetail from './components/VideoDetail';
 import {VideoList, VideoListItem} from './components/VideoList';
+import Title from './components/Title';
 import API from './utils/API';
+import styled from 'styled-components';
 
 class App extends Component {
   /* Storing information retrieved from API */
@@ -27,11 +29,16 @@ class App extends Component {
     this.setState({ selectedVideo: video});
   }
 
-  throttledSearch = _.debounce(this.searchYouTube, 900);
+  throttledSearch = _.debounce(this.searchYouTube, 600);
 
   render() {
     return (
       <Container>
+        <Row>
+          <Col>
+            <Title />
+          </Col>
+        </Row>
         <Row>
           <Col>
             <SearchBar searchYouTube={this.throttledSearch}/>

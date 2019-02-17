@@ -9,14 +9,14 @@ const List = styled.ul`
 // Item has one of following: active=true or active=false
 const Item = styled.li`
     img {
-        border: ${props => props.active ? "3px solid pink" : "1px solid turquoise"};
+        border: ${props => props.active ? "4px solid #FFAAD6" : "none"};
         width: 200px;
         margin-bottom: 15px;
         cursor: pointer;
         border-radius: 5px;
 
         :hover {
-            border-color: limegreen;
+            border: 4px solid #3BB29F;
         }
     }
 `
