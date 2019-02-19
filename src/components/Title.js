@@ -8,9 +8,7 @@ const Heading = styled.h1`
 
 const Title = props => {
     return (
-        <Heading>
-            <h1>React YouTube Search!</h1>
-        </Heading>
+        <Heading>React YouTube Search!</Heading>
     )
 }
 

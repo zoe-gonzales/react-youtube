@@ -10,7 +10,6 @@ const VideoDetail = ({ video }) => {
     if (!video) {
         return <p>Loading spinning goes here</p>
     }
-    console.log(video);
     const videoId = video.id.videoId;
     const videoURL = `https://www.youtube.com/embed/${videoId}?rel=0`;
     
