@@ -1,5 +1,7 @@
+import dotenv from 'dotenv';
 import axios from 'axios';
-const apiKey = 'AIzaSyAOcdZjvmiXft38GHbiaxjzwHRC6xtwTOU';
+dotenv.config();
+const apiKey = process.env.REACT_APP_KEY;
 
 export default {
     searchVideos: function(term) {
